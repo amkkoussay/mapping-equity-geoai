@@ -33,7 +33,7 @@ units}/\text{area})$. Full detail: `03_methodology.md`.
 | `07_results_and_limitations.md` | Official results vs local diagnostics; negative results |
 | `08_award_requirements_checklist.md` | Rules compliance + Best Documentation requirements (form link: row A2) |
 | `09_claims_and_uncertainties.md` | All important claims grouped by confidence |
-| `10_audit_summary.md` | Final verdicts and remaining blockers |
+| `10_audit_summary.md` | Final verdicts and post-submission status |
 | `01_evidence_register.csv` | 33 claims with evidence pointers and statuses |
 | `evidence/submission_s0.8_HeXaMraA.csv` | The documented submission file (SHA-256 `e5430d51…`) |
 | `evidence/zindi_submissions_proof.pdf` | Capture of the official submissions page verifying HeXaMraA ↔ 0.081231862 (SHA-256 `46c507f4…`) |
@@ -82,5 +82,6 @@ complete package — including the binary proof PDF
 (`evidence/zindi_submissions_proof.pdf`) — is the zip archive
 (`zindi_best_documentation_package.zip`). The repository itself is
 publicly readable (observed 2026-10-29 evening — `08` A7, register
-C032). Every packaged file, the PDF
-included, is hash-listed in `MANIFEST.sha256`.
+C032). Every packaged file except the
+manifest itself — the proof PDF included — is hash-listed in
+`MANIFEST.sha256`.

@@ -72,8 +72,14 @@ The form's sections beyond Best Documentation remain unexamined.
 configuration breached the campaign's own frozen stability gate
 (maxcoef 6.10 > 2.5) and was submitted by explicit participant decision;
 its local screen (0.0711) is not its official score (0.081231862), and the
-gap is documented, not smoothed. (ii) The repository's own README/writeup
-are stale relative to this submission (`00` §4). (iii) All results are
+gap is documented, not smoothed. (ii) The local solution
+repo's own documentation — `repo/README.md` and `repo/WRITEUP.md`, files
+of the local project tree (`~/workspace/geoai-zindi/repo/`), which are
+**not** part of this package and are not the GitHub repository's README
+— is stale relative to this submission: it states a best public RMSE of
+0.104203 and covers only the v2 method, not the
+span/probe/calibration chain documented here (`00` §4, register C019).
+This package's own README is current. (iii) All results are
 public-split; private-split behaviour — especially for a high-leverage
 file — is unknown.
 

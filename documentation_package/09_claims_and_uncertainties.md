@@ -25,8 +25,11 @@ Confidence labels: **Verified** (direct artifact or executed check) ·
   the packaged probe and evaluator copies are byte-identical to their
   originals (`06` R1).
 - `repo/README.md`'s "best public RMSE 0.104203" is stale; the repo ledger
-  omits the 2026-10-29 afternoon submissions; no git history and no
-  platform receipt exist locally (`00` §4).
+  (`repo/docs/experiments.csv`) omits the 2026-10-29 afternoon
+  submissions; no git history exists locally, and no platform receipt
+  existed in the project tree when it was inventoried — the
+  platform-record capture was obtained later and is retained in this
+  package (`00` §4 item 3 and its update; `02` §2).
 - Official rules text (fetched 2026-10-29): provided-data-only for the
   leaderboard with a Bias-Discovery exception; ≈30/70 public/private
   split; 2-submission private selection with best-public fallback; top-10
