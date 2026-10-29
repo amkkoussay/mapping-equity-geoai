@@ -38,7 +38,7 @@ $s_0 = 0.8$, $\alpha = -0.4$, $\tau = 0.5$. Full detail: `03_methodology.md`.
 |---|---|
 | `00_reviewer_quick_start.md` | **Start here** — one page: what this documents, exact run commands with verified results, and the open items |
 | `00_project_inventory.md` | Project/repo inventory, artifact table with hashes, inconsistencies found |
-| `01_evidence_register.csv` | 32 claims with evidence pointers, status and follow-ups |
+| `01_evidence_register.csv` | 33 claims with evidence pointers, status and follow-ups |
 | `02_submission_provenance.md` | The submission, its evidence chain, candidate comparison, discrepancies |
 | `03_methodology.md` | The implemented method in execution order, with formulas and per-feature definitions |
 | `04_data_lineage_and_edge_cases.md` | Input→output lineage table; edge cases as actually coded |
@@ -93,7 +93,7 @@ extract against its source parquet. Details and observed outputs:
   Documentation section (that section's upload requirement — a single
   PDF or text document, max 10 MB — and its required
   "Submission ID" field were verified from the form itself on
-  2026-10-29; the form has **not** been submitted — `08` A5).
+  2026-10-29, and the form was **submitted by the participant on 2026-10-29 via the official form, category Best Documentation, uploading the consolidated PDF `Koussay-Mehdouani_Best-Documentation_HeXaMraA.pdf` (57 pages, 502,105 bytes, SHA-256 `17d7527ef9cf148fdb607c98c34024dd424af301572dac9aca83fb9d22260aee`) and entering Submission ID **HeXaMraA**** — `08` A5, register C033).
 - The compliance status of the provided strata column
   `usfs_BuildingCount_sum` — an **open item**, with the evidence on both
   sides and the full dependency chain (`03` §7, `08` R11/§1.1).
@@ -103,5 +103,6 @@ extract against its source parquet. Details and observed outputs:
 
 See `08_award_requirements_checklist.md` for the requirement-by-requirement
 checklist against the official rules (fetched 2026-10-29), the prize
-mechanics as far as official sources establish them, and the five exact
-remaining actions before submitting for Best Documentation.
+mechanics as far as official sources establish them, and the award
+submission record: the form was **submitted by the participant on 2026-10-29 via the official form, category Best Documentation, uploading the consolidated PDF `Koussay-Mehdouani_Best-Documentation_HeXaMraA.pdf` (57 pages, 502,105 bytes, SHA-256 `17d7527ef9cf148fdb607c98c34024dd424af301572dac9aca83fb9d22260aee`) and entering Submission ID **HeXaMraA**** (register C033); `08` §3
+also lists the actions that remain after submission.
