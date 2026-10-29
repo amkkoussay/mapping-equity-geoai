@@ -38,7 +38,7 @@ $s_0 = 0.8$, $\alpha = -0.4$, $\tau = 0.5$. Full detail: `03_methodology.md`.
 |---|---|
 | `00_reviewer_quick_start.md` | **Start here** — one page: what this documents, exact run commands with verified results, and the open items |
 | `00_project_inventory.md` | Project/repo inventory, artifact table with hashes, inconsistencies found |
-| `01_evidence_register.csv` | 31 claims with evidence pointers, status and follow-ups |
+| `01_evidence_register.csv` | 32 claims with evidence pointers, status and follow-ups |
 | `02_submission_provenance.md` | The submission, its evidence chain, candidate comparison, discrepancies |
 | `03_methodology.md` | The implemented method in execution order, with formulas and per-feature definitions |
 | `04_data_lineage_and_edge_cases.md` | Input→output lineage table; edge cases as actually coded |
