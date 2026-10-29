@@ -34,7 +34,7 @@ units}/\text{area})$. Full detail: `03_methodology.md`.
 | `08_award_requirements_checklist.md` | Rules compliance + Best Documentation requirements (form link: row A2) |
 | `09_claims_and_uncertainties.md` | All important claims grouped by confidence |
 | `10_audit_summary.md` | Final verdicts and remaining blockers |
-| `01_evidence_register.csv` | 31 claims with evidence pointers and statuses |
+| `01_evidence_register.csv` | 33 claims with evidence pointers and statuses |
 | `evidence/submission_s0.8_HeXaMraA.csv` | The documented submission file (SHA-256 `e5430d51…`) |
 | `evidence/zindi_submissions_proof.pdf` | Capture of the official submissions page verifying HeXaMraA ↔ 0.081231862 (SHA-256 `46c507f4…`) |
 
@@ -70,10 +70,10 @@ official-evidence update (`06` R5).
   naming this field; five direct participant questions about it are
   unanswered; a clarification e-mail has been drafted, not sent
   (`08` R11 and §1.1).
-- **Award form fields unverified** — the Best Documentation form link is
-  retrieved (`08` A2), but the form's own fields sit behind a Google
-  sign-in wall, and the upload format (PDF ≤ 10 MB) rests on a
-  participant report (`08` A3, A5).
+- **Award form — submitted** — the Best Documentation entry was
+  submitted by the participant on 2026-10-29 via the official form, category Best Documentation, uploading the consolidated PDF `Koussay-Mehdouani_Best-Documentation_HeXaMraA.pdf` (57 pages, 502,105 bytes, SHA-256 `17d7527ef9cf148fdb607c98c34024dd424af301572dac9aca83fb9d22260aee`) and entering Submission ID **HeXaMraA**
+  (register C033; `08` A5, §3). The form's sections beyond the Best
+  Documentation section remain unexamined.
 
 ## Distribution caveat
 

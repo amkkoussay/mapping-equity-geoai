@@ -86,7 +86,8 @@ Confidence labels: **Verified** (direct artifact or executed check) ·
   includes a required **"Submission ID associated with this
   submission"** field — `08` A5.) The form URL itself is retrieved and
   cited (`08` A2). No special-prize-specific deadline is stated
-  (`08` A6). The form has **not** been submitted.
+  (`08` A6). The form itself was **submitted by the participant on 2026-10-29 via the official form, category Best Documentation, uploading the consolidated PDF `Koussay-Mehdouani_Best-Documentation_HeXaMraA.pdf` (57 pages, 502,105 bytes, SHA-256 `17d7527ef9cf148fdb607c98c34024dd424af301572dac9aca83fb9d22260aee`) and entering Submission ID **HeXaMraA**** (register C033; `08` §3);
+  only the sections beyond Best Documentation remain unexamined.
 - **OPEN:** whether the organisers would treat `usfs_BuildingCount_sum`
   as an ordinary provided column or as reference-layer-adjacent. The
   column indisputably ships inside the provided strata table and reaches

@@ -61,11 +61,12 @@ Zindi staff post (discussion 35250, 2026-10-08) allowing "permitted
 columns in the strata tables" without naming this field, and the
 documented absence of an organizer answer to five direct participant
 questions about it. A clarification e-mail to the organisers has been
-drafted by the participant and not yet sent. Award mechanics are now
-largely established from the official Info page (prize, criterion,
-content and identification requirements, form URL — `08` §2); only the
-form's own fields and upload format remain **Unverified** (sign-in wall;
-participant-reported PDF ≤ 10 MB).
+drafted by the participant and not yet sent. Award mechanics are
+established from the official Info page and, for the Best Documentation
+section, from the form itself (prize, criterion, content and
+identification requirements, form URL, upload format — `08` §2); and
+the entry itself is complete: the form was **submitted by the participant on 2026-10-29 via the official form, category Best Documentation, uploading the consolidated PDF `Koussay-Mehdouani_Best-Documentation_HeXaMraA.pdf` (57 pages, 502,105 bytes, SHA-256 `17d7527ef9cf148fdb607c98c34024dd424af301572dac9aca83fb9d22260aee`) and entering Submission ID **HeXaMraA**** (register C033).
+The form's sections beyond Best Documentation remain unexamined.
 
 **Candour items a reviewer should know.** (i) The documented
 configuration breached the campaign's own frozen stability gate
@@ -76,17 +77,17 @@ are stale relative to this submission (`00` §4). (iii) All results are
 public-split; private-split behaviour — especially for a high-leverage
 file — is unknown.
 
-## Remaining blockers before award submission
+## Status after award submission
 
-1. Sign in to the Best Documentation form (link retrieved — `08` A2) and
-   record its own fields, its upload format, and any deadline shown
-   inside it — `08` §3.1. *(Provenance proof, formerly this list's
-   item 2, is captured and filed: `evidence/zindi_submissions_proof.pdf`.)*
+1. **Best Documentation form — submitted.** The entry was **submitted by the participant on 2026-10-29 via the official form, category Best Documentation, uploading the consolidated PDF `Koussay-Mehdouani_Best-Documentation_HeXaMraA.pdf` (57 pages, 502,105 bytes, SHA-256 `17d7527ef9cf148fdb607c98c34024dd424af301572dac9aca83fb9d22260aee`) and entering Submission ID **HeXaMraA****
+   (register C033). Provenance proof is captured and filed:
+   `evidence/zindi_submissions_proof.pdf`. Nothing further is required
+   for the award entry itself; what follows is the organisers' judging.
 2. Complete the private-leaderboard 2-submission selection before the
    close — `08` R7.
 3. Decide whether to send the drafted clarification e-mail on
-   `usfs_BuildingCount_sum` (R11); the package discloses the item either
-   way — `08` §1.1.
+   `usfs_BuildingCount_sum` (R11 stays OPEN); the package discloses the
+   item either way — `08` §1.1.
 4. If a top-10 code review is later requested, be ready to explain the two
    upstream reproduction breaks (L1 data layout, Stage D script) — the
    retained inputs and this package are the mitigation.
