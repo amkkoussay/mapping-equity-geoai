@@ -1,0 +1,14 @@
+# Environment used for the 2026-10-29 audit and validation runs (derived from the
+# project's actual .venv site-packages metadata and the imports of the relevant
+# code paths: repo/features.py, repo/pipeline_v2.py, work29/evaluator.py,
+# screening-v2/unified_screen.py, exp-v7/code/h1_density_calibration.py).
+# The run-time versions used when the submission was generated on 2026-10-28/29
+# were not separately recorded; the regeneration in 06_validation_report.md was
+# executed under exactly these versions and reproduced the submitted file
+# bit-for-value (max abs diff 0.0).
+python==3.12.3
+numpy==2.5.4
+pandas==3.1.0
+pyarrow==26.0.0
+duckdb==1.5.6        # only needed for repo/features.py (feature extraction level)
+# duckdb also requires its `spatial` extension at runtime: LOAD spatial;
