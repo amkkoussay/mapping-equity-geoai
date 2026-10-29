@@ -80,5 +80,7 @@ official-evidence update (`06` R5).
 The GitHub copy of this package contains the **text files only**; the
 complete package — including the binary proof PDF
 (`evidence/zindi_submissions_proof.pdf`) — is the zip archive
-(`zindi_best_documentation_package.zip`). Every packaged file, the PDF
+(`zindi_best_documentation_package.zip`). The repository itself is
+publicly readable (observed 2026-10-29 evening — `08` A7, register
+C032). Every packaged file, the PDF
 included, is hash-listed in `MANIFEST.sha256`.

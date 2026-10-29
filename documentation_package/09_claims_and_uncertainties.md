@@ -103,7 +103,8 @@ Confidence labels: **Verified** (direct artifact or executed check) ·
 - Whether the density calibration's public-split gain reflects the true
   target (`07` §5).
 - Contents/history of the participant's remote GitHub repository
-  (referenced in records as private during the challenge; not inspected).
+  (private in early campaign records; observed **public** on 2026-10-29
+  evening — register C032; its full contents/history were not audited).
 
 ## The evidence gaps that matter most
 
