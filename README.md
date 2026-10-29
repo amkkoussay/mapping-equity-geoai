@@ -89,10 +89,11 @@ extract against its source parquet. Details and observed outputs:
   numerically consistent, but its exact arithmetic is unverified.
 - span5's exact combination coefficients.
 - Feature-pipeline re-execution (raw data layout absent).
-- The Best Documentation **form's own fields** and upload format (the
-  form link itself is retrieved and cited in `08` A2; the form sits
-  behind a Google sign-in wall; the PDF ≤ 10 MB format rests on a
-  participant report — `08` A5).
+- The Best Documentation form's sections **beyond** the Best
+  Documentation section (that section's upload requirement — a single
+  PDF or text document, max 10 MB — and its required
+  "Submission ID" field were verified from the form itself on
+  2026-10-29; the form has **not** been submitted — `08` A5).
 - The compliance status of the provided strata column
   `usfs_BuildingCount_sum` — an **open item**, with the evidence on both
   sides and the full dependency chain (`03` §7, `08` R11/§1.1).
