@@ -7,14 +7,15 @@ assigned.)
 
 ## Verdicts
 
-**Provenance confidence — high for the code→file link, moderate for the
-file→platform link.** The documented file
+**Provenance confidence — high on both links.** The documented file
 (`stage2/lowest3/2_v7_probe_s0.8_a-0.4_tau0.5.csv`, SHA-256 `e5430d51…`) is
-reproduced *exactly* from its documented formula and retained inputs. Its
-association with Zindi submission **HeXaMraA** and official public score
-**0.081231862** is attested by three independent internal records but by
-no platform-side artifact — **Strongly supported**, upgradeable by the
-participant from his own submissions page.
+reproduced *exactly* from its documented formula and retained inputs.
+Its association with Zindi submission **HeXaMraA** and official public
+score **0.081231862** is now **Verified — platform record captured**: a
+capture of the official submissions page is retained in this package
+(`evidence/zindi_submissions_proof.pdf`, SHA-256 `46c507f4…`), showing
+the ID, submitter koussayy, the score and the configuration's own name
+on one row, corroborated by three independent internal records (`02` §2).
 
 **Reproducibility — exact at the final level, broken at two upstream
 points.** L2 (submission file from its inputs) is verified bit-for-value
@@ -39,8 +40,9 @@ direction's exact arithmetic, and the original run-time package versions.
 numeric bounds, exact regeneration of two independently scored files,
 determinism, screen recomputation, package hygiene scan, and — after the
 repair — an isolated package-only execution of the packaged tests and
-rebuild (`06` R3). No executed test failed. The untestable areas (raw-geometry handling in Stage A; platform
-association) are named as gaps, not silently skipped.
+rebuild (`06` R3), re-run in place after the official-evidence update
+(`06` R5). No executed test failed. The untestable area (raw-geometry
+handling in Stage A) is named as a gap, not silently skipped.
 
 **Compliance status — clean for the documented submission, one OPEN
 question.** Only challenge-provided data enters the chain; removed
@@ -53,9 +55,17 @@ arrives only through the anchor span, and the final calibration's direct
 inputs are free of it — but the official rules text does not address the
 field, and a documented second-hand attribution derives the underlying
 product from a removed layer. The item is recorded as **Unverified —
-OPEN** (`08` R11/§1.1), resolved in neither direction. Award mechanics
-(form URL, required fields/formats) remain **Unverified** from official
-sources.
+OPEN** (`08` R11/§1.1), resolved in neither direction — though the
+evidence base now includes the strongest organizer text available, a
+Zindi staff post (discussion 35250, 2026-10-08) allowing "permitted
+columns in the strata tables" without naming this field, and the
+documented absence of an organizer answer to five direct participant
+questions about it. A clarification e-mail to the organisers has been
+drafted by the participant and not yet sent. Award mechanics are now
+largely established from the official Info page (prize, criterion,
+content and identification requirements, form URL — `08` §2); only the
+form's own fields and upload format remain **Unverified** (sign-in wall;
+participant-reported PDF ≤ 10 MB).
 
 **Candour items a reviewer should know.** (i) The documented
 configuration breached the campaign's own frozen stability gate
@@ -68,12 +78,15 @@ file — is unknown.
 
 ## Remaining blockers before award submission
 
-1. Retrieve the official Best Documentation form (link, required fields,
-   formats, exact deadline) from the competition page — `08` §3.1.
-2. Confirm HeXaMraA ↔ 0.081231862 on the participant's Zindi submissions
-   page; capture proof if possible — `08` §3.2.
-3. Complete the private-leaderboard 2-submission selection before the
+1. Sign in to the Best Documentation form (link retrieved — `08` A2) and
+   record its own fields, its upload format, and any deadline shown
+   inside it — `08` §3.1. *(Provenance proof, formerly this list's
+   item 2, is captured and filed: `evidence/zindi_submissions_proof.pdf`.)*
+2. Complete the private-leaderboard 2-submission selection before the
    close — `08` R7.
+3. Decide whether to send the drafted clarification e-mail on
+   `usfs_BuildingCount_sum` (R11); the package discloses the item either
+   way — `08` §1.1.
 4. If a top-10 code review is later requested, be ready to explain the two
    upstream reproduction breaks (L1 data layout, Stage D script) — the
    retained inputs and this package are the mitigation.

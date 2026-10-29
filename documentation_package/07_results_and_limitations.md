@@ -34,8 +34,10 @@ private-split (70%) scores are unknown until the challenge closes.
 | 19 | 7WvX14fp | H4 piecewise | 0.082783512 |
 | 20 | SobRVFX8 | H6 β=−0.6 interaction | 0.082509789 |
 
-Status of this table: **Strongly supported** (internal records agree; no
-platform receipt exists locally — `02` §2). One additional attempt
+Status of this table: **Strongly supported** (internal records agree).
+The documented submission's own row (HeXaMraA ↔ 0.081231862) is separately
+**Verified — platform record captured** (`evidence/zindi_submissions_proof.pdf`;
+`02` §2). One additional attempt
 (Z81nvmtR, an early staging of the building probe) errored unscored due to
 the GEOID-formatting incident (`04` §2) and consumed no scoring slot.
 The participant's final leaderboard rank is **not** recorded locally and is

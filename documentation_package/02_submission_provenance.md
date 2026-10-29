@@ -5,8 +5,8 @@
 | Field | Value | Status |
 |---|---|---|
 | Participant | Koussay Mehdouani — Zindi username **koussayy** | Documented (`repo/WRITEUP.md` §1) |
-| Zindi submission ID | **HeXaMraA** | Strongly supported (§2) |
-| Official public score | **0.081231862** (public leaderboard RMSE; public split ≈30% of test tracts) | Strongly supported (§2) |
+| Zindi submission ID | **HeXaMraA** | **Verified — platform record captured** (§2) |
+| Official public score | **0.081231862** (public leaderboard RMSE; public split ≈30% of test tracts) | **Verified — platform record captured** (§2) |
 | Submitted | 2026-10-29, 14:40 (Africa/Tunis), via the Zindi web interface | Documented (`TRACKING.md`) |
 | Local file | `stage2/lowest3/2_v7_probe_s0.8_a-0.4_tau0.5.csv` | Verified as an artifact (hash below) |
 | File SHA-256 | `e5430d51d509955e4ce5def4eaf0c8f3c00e23a805b38642062eb7529311ede4` | Verified (computed 2026-10-29) |
@@ -17,7 +17,19 @@
 
 ## 2. Evidence for the file → ID → score association
 
-Three mutually independent internal records agree on the triple
+**Platform record (decisive, added 2026-10-29 evening).** A capture of the
+official Zindi submissions page
+(`https://zindi.world/competitions/bias-bounty-mapping-equity-challenge/submissions`)
+is retained in this package as **`evidence/zindi_submissions_proof.pdf`**
+(SHA-256
+`46c507f45dbe25715c6a25802bd25b7539192e429bf5cf05962eddd1e1c2405e`;
+524,102 bytes). On a single row it shows: submission ID **HeXaMraA**,
+submitter **koussayy**, public score **0.081231862**, and the submission
+comment **"v7_probe_s0.8_a-0.4_tau0.5"** — the documented configuration's
+own name. The file → ID → score association is therefore labelled
+**Verified — platform record captured**.
+
+Three mutually independent internal records agree with the same triple
 (file, HeXaMraA, 0.081231862):
 
 1. **`TRACKING.md`**, entry "2026-10-29 ~14:29–14:42 — LOWEST-3 SUBMITTED TO
@@ -32,11 +44,13 @@ Three mutually independent internal records agree on the triple
    file→ID→score mapping, and `screen-study/LAW_APPLIED_ALL.md` reproduces
    the same screen value (0.0711) for the file.
 
-**Residual uncertainty (stated plainly):** no official platform receipt,
-confirmation e-mail, or screenshot of the submission exists in the project
-tree (searched 2026-10-29; see `00` §4.3). The association is therefore
-labelled **Strongly supported**, not Verified. It can be upgraded to Verified
-only against the participant's own Zindi submissions page.
+**Residual nuance (stated plainly):** the retained platform record is a
+PDF rendering of the live submissions page as captured on 2026-10-29, kept
+inside this package and hash-listed in `MANIFEST.sha256`; it is not a
+signed platform receipt, and it attests the public-split association only
+(private-split scoring is separate and still unknown — `09`). Within that
+scope, no further local upgrade is needed: the earlier gap recorded in
+`00` §4.3 is closed by this artifact.
 
 ## 3. Generation chain (how the file was produced)
 
@@ -71,7 +85,7 @@ Step-by-step status:
 | (5) probe construction | Strongly supported (documented) / exact arithmetic **Unverified** | `upload28b/HYPOTHESIS.md`; construction script **searched for across the full workspace and archives (2026-10-29) and not found** (§3.1); staging script `check_order.py` retained (it re-keys, does not construct); numeric consistency check in `06` (corr 0.940 with the centred POI component) and reconstruction attempt `06` R4 |
 | (6) grid record of the configuration | Verified | `exp-v7/attempts.csv` line 78 |
 | (6)+(7) code → file | **Verified by re-execution** | Audit rebuild (`scripts/rebuild_s08.py`) reproduces the file with max abs diff **0.0** on all 9,794 rows; the sibling H1 file also reproduces exactly (`06`) |
-| (8) file → HeXaMraA → 0.081231862 | Strongly supported | §2 above |
+| (8) file → HeXaMraA → 0.081231862 | **Verified — platform record captured** | `evidence/zindi_submissions_proof.pdf` (§2) + the three records below it |
 
 ## 3.1 Search for the probe construction script (2026-10-29, second pass)
 
@@ -126,7 +140,7 @@ elsewhere in this package.
 
 | Candidate | Official score | File | Association status |
 |---|---|---|---|
-| **s0.8 (documented)** | **0.081231862** | `stage2/lowest3/2_v7_probe_s0.8_a-0.4_tau0.5.csv` | Strongly supported; code→file Verified |
+| **s0.8 (documented)** | **0.081231862** | `stage2/lowest3/2_v7_probe_s0.8_a-0.4_tau0.5.csv` | **Verified — platform record captured**; code→file Verified |
 | s1.1 | 0.082179413 | `stage2/lowest3/1_v7_probe_s1.1_a-0.4_tau0.5.csv` | Same record set; worse official score |
 | H4 piecewise | 0.082783512 | `stage2/lowest3/3_H4_piecewise_a.75_b-.2_c-.2_d.2.csv` | Same record set; worse official score |
 | H1 | 0.082777005 | `exp-v7/candidates/h1_winner.csv` | Ledger + records; code→file Verified in this audit; worse official score |

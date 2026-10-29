@@ -37,7 +37,11 @@ after packaging: exit code 0).
   it re-keys already-built probe files and does not construct them.)
 - **F3 — No platform-side artifact.** No test can upgrade the
   file→HeXaMraA→0.081231862 association beyond Strongly supported from
-  local evidence alone (`02` §2).
+  local evidence alone (`02` §2). **(Closed 2026-10-29 evening:** a
+  capture of the official submissions page was obtained and filed as
+  `evidence/zindi_submissions_proof.pdf`; the association is upgraded to
+  **Verified — platform record captured** — see the third-pass addendum
+  below.)
 
 No test that was run failed. Items F1–F3 are evidence gaps, not test
 failures; they are carried into `09` and `10` as open items.
@@ -63,3 +67,21 @@ in each file's header).
 
 After the repair, the packaged tests were re-run in place as well:
 10/10 PASS and rebuild exit 0 (same outputs as R3).
+
+## Addendum — official-evidence update (2026-10-29, third pass)
+
+On 2026-10-29 evening the official findings were folded into this
+package: the platform capture `evidence/zindi_submissions_proof.pdf`
+(SHA-256
+`46c507f45dbe25715c6a25802bd25b7539192e429bf5cf05962eddd1e1c2405e`,
+524,102 bytes — hash and size re-verified against the file on disk
+during this update) upgrades the provenance in `02`; the Best
+Documentation requirements and form link from the official Info page
+rewrite `08` §2; and the Zindi staff statement (discussion 35250) plus
+the five unanswered participant threads are added to the still-OPEN item
+R11 (`08` §1.1). A `00_reviewer_quick_start.md` was added at the
+participant's request. No computation changed.
+
+| # | Check | Command / method | Observed result |
+|---|---|---|---|
+| R5 | Post-update in-place re-run of the packaged checks | `.venv/bin/python documentation_package/tests/test_submission_file.py` and `.venv/bin/python documentation_package/scripts/rebuild_s08.py` (from `~/workspace/geoai-zindi`, 2026-10-29) | Tests: **10/10 PASS**, exit 0 (sha256 match, schema, 9,794 rows, GEOID uniqueness/format, finiteness, bounds, tract-set and row-order equality vs the probe). Rebuild: `rows=9794 max_abs_diff=0.0 mean_abs_diff=0.0 exact_rows=9794`, exit 0 — identical to R3/T11 |

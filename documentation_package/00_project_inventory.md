@@ -95,7 +95,13 @@ challenge package (per region: Overture extracts, ACS housing, strata, sample su
 3. **No official submission receipt, confirmation e-mail or platform
    screenshot** for any submission exists anywhere in the tree (searched:
    receipt/screenshot/image artifacts — only competitor figures found). The
-   file→submission-ID→score association rests on internal records (see `02`).
+   file→submission-ID→score association initially rested on internal
+   records (see `02`). **Update (2026-10-29 evening):** a capture of the
+   official submissions page was obtained and is retained in this package
+   as `evidence/zindi_submissions_proof.pdf` (SHA-256 `46c507f4…`),
+   upgrading the documented submission's association to **Verified —
+   platform record captured** (`02` §2). The other submissions'
+   associations still rest on internal records.
 4. **The exact construction script of the staged POI-probe file was not
    retained**; its construction is documented in `upload28b/HYPOTHESIS.md`
    and `repo/docs/experiments.csv`. A dedicated second-pass search of the
