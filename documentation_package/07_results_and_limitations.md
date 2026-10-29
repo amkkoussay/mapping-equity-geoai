@@ -105,16 +105,19 @@ proj 0.0682, resid 0.0201 (`06` T9).
    gain is regional level, not tract detail. The documented chain builds
    on a probe vector that descends from those submissions.
 4. **Upstream weak links.** span5's exact coefficients are not recorded;
-   the probe's generating script is lost (documented construction +
-   correlation 0.940 only). If either vector contained an error, L2
-   reproduction would still succeed — it verifies the final step, not the
-   ancestry.
+   the probe's construction script was searched for across the full
+   workspace and archives and not found (documented construction +
+   correlation 0.940 only; `02` §3.1). If either vector contained an
+   error, L2 reproduction would still succeed — it verifies the final
+   step, not the ancestry.
 5. **Building-denominator sensitivity.** The v2 building component divides
    by a provided strata column (`usfs_BuildingCount_sum`). The method's
    author flags this himself in `repo/WRITEUP.md` §2 and ships a fallback
-   mode; the documented submission does not consume the building component
-   directly (its inputs are $P$, $hu$, $area$), but $P$'s ancestry includes
-   v2-derived submissions.
+   mode. The documented submission's own inputs are $P$, $hu$ and $area$,
+   none of which involves the column — but the column reaches the file
+   through the anchor span ($P$ descends from span5, fitted over
+   v2-derived anchors), so the dependence is real and indirect, not
+   absent. Full chain: `03` §7. Compliance status: open (`08` R11).
 6. **Assumption load of the calibration form.** The tanh density
    modulation is a chosen functional form from a 456-point grid, selected
    by a local screen — a selection procedure with documented optimism

@@ -17,6 +17,13 @@ Confidence labels: **Verified** (direct artifact or executed check) ·
   recomputed (`06` T9) — a local diagnostic, **not** an official score.
 - The exp-v7 grid log records this configuration at `attempts.csv` line 78
   with `ok=False` under the era's guard.
+- **This package is self-contained at reproduction level L2**: the test
+  suite (10/10) and the rebuild (max abs diff 0.0) were executed in an
+  isolated copy of the package alone, with no reads from the project tree
+  (`06` R3). The packaged `hu`/`area_km2` extract is verified against its
+  source parquet (9,794 rows, per-column max abs diff 0.0; `06` R2), and
+  the packaged probe and evaluator copies are byte-identical to their
+  originals (`06` R1).
 - `repo/README.md`'s "best public RMSE 0.104203" is stale; the repo ledger
   omits the 2026-10-29 afternoon submissions; no git history and no
   platform receipt exist locally (`00` §4).
@@ -34,7 +41,9 @@ Confidence labels: **Verified** (direct artifact or executed check) ·
 - $P$'s identity and score (cjw1BmR3, 0.08483727); span5's identity and
   score (Pih3vnoM, 0.084844078).
 - The probe construction "span5 + quarter-amplitude POI direction"
-  (documented in two places; numeric consistency corr 0.940 — `06` T8).
+  (documented in two places; numeric consistency corr 0.940 — `06` T8;
+  construction script searched for across the full workspace and all zip
+  archives on 2026-10-29 and **not found** — `02` §3.1, `06` R4).
 - The leaderboard metric behaves as RMSE (`metric-audit/REPORT.txt`).
 - Prize pool $10,000 with Best Documentation $500 (campaign record of the
   competition page; not in the fetched rules text).
@@ -53,12 +62,21 @@ Confidence labels: **Verified** (direct artifact or executed check) ·
 ## Unverified / Unknown
 
 - The exact five directions and coefficients of span5 (Stage C).
-- The exact arithmetic of the probe's POI direction (Stage D; script lost).
+- The exact arithmetic of the probe's POI direction (Stage D; construction
+  script searched for and not found — `02` §3.1; four candidate direction
+  forms fail to reproduce $P$, best max abs diff 5.0e-3 — `06` R4).
 - The Best Documentation **form URL**, its required fields and accepted
   file formats (`08` A2–A4). **No URL is asserted anywhere in this
   package.**
-- Whether the organisers would treat `usfs_BuildingCount_sum` as a
-  provided column (our reading) or as reference-layer-adjacent (`08` §1).
+- **OPEN:** whether the organisers would treat `usfs_BuildingCount_sum`
+  as an ordinary provided column or as reference-layer-adjacent. The
+  column indisputably ships inside the provided strata table and reaches
+  the documented file only through the anchor-span path (full chain:
+  `03` §7); the official rules text retrieved 2026-10-29 does not address
+  this field at all; and a second-hand documented attribution says the
+  underlying USFS product derives from the removed Microsoft footprints
+  (not independently verified here). Evidence on both sides: `08` §1.1.
+  Status: **Unverified — OPEN**, by the participant's own framing.
 - The participant's final rank and all private-split scores (revealed at
   close).
 - Whether the density calibration's public-split gain reflects the true
@@ -71,8 +89,9 @@ Confidence labels: **Verified** (direct artifact or executed check) ·
 1. **No platform-side proof** links the file to ID HeXaMraA / score
    0.081231862 (fixable by the participant in minutes on his submissions
    page — `08` §3.2).
-2. **Stage D's generating script is lost**; the probe step is documented
-   and numerically consistent but not re-executable.
+2. **Stage D's construction script was searched for and not found**
+   (full workspace + all archives, 2026-10-29 — `02` §3.1); the probe step
+   is documented and numerically consistent but not re-executable.
 3. **L1 is not re-runnable in this tree** (`repo/data/` absent), so the
    chain from raw extracts to `v2_tracts.parquet` is evidenced by the
    surviving artifact and code, not by re-execution.

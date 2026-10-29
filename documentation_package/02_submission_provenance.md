@@ -68,10 +68,59 @@ Step-by-step status:
 | (1)–(2) executed output `v2_tracts.parquet` | Strongly supported | Artifact present (SHA-256 `f216c703…`); the run itself was **not** re-executed (raw data absent in `repo/` layout) |
 | (3) anchor scores | Strongly supported | `work29/evaluator.py` SCORED + `repo/docs/experiments.csv` + `TRACKING.md` agree |
 | (4) span5 construction | Strongly supported | `upload28/…/README.md` + `experiments.csv`; exact fit coefficients not separately recorded |
-| (5) probe construction | Strongly supported (documented) / exact arithmetic **Unverified** | `upload28b/HYPOTHESIS.md`; staging script not retained; numeric consistency check in `06` (corr 0.940 with the centred POI component) |
+| (5) probe construction | Strongly supported (documented) / exact arithmetic **Unverified** | `upload28b/HYPOTHESIS.md`; construction script **searched for across the full workspace and archives (2026-10-29) and not found** (§3.1); staging script `check_order.py` retained (it re-keys, does not construct); numeric consistency check in `06` (corr 0.940 with the centred POI component) and reconstruction attempt `06` R4 |
 | (6) grid record of the configuration | Verified | `exp-v7/attempts.csv` line 78 |
 | (6)+(7) code → file | **Verified by re-execution** | Audit rebuild (`scripts/rebuild_s08.py`) reproduces the file with max abs diff **0.0** on all 9,794 rows; the sibling H1 file also reproduces exactly (`06`) |
 | (8) file → HeXaMraA → 0.081231862 | Strongly supported | §2 above |
+
+## 3.1 Search for the probe construction script (2026-10-29, second pass)
+
+The first pass of this audit reported the Stage-D generating script as
+"not retained". At the participant's direction, a dedicated search was
+executed before that wording was allowed to stand. **Result: not found.**
+Scope and method, so the negative result is itself auditable:
+
+- **Trees searched (content grep over `*.py`, `*.ipynb`, `*.sh`, `*.R`,
+  plus filename search):** the entire `~/workspace/geoai-zindi` tree
+  (excluding `.venv`) — including `repo/`, `upload28/`, `upload28b/`,
+  `max-gamble-pack/`, `work29/`, `batch28/`, `batch29/`, `batch-final/`,
+  `pkg/`, `pkg2/`, `review-bundle/`, `rebuild-lab/`, `audit-final/` and
+  all `exp-*` directories — and the rest of `~/workspace/` outside
+  `geoai-zindi/` (filename search for `*probe*`, content grep for the
+  probe filename).
+- **Keys:** `poi_component_probe`, `component_probe`, `05_poi`,
+  `span5`, `quarter`, `amplitude`, `staged`, and code writing
+  `04_building_component_probe.csv` / `05_poi_component_probe.csv`.
+- **Archives searched (member listings + name grep):** every zip in
+  `~/workspace/your_files/` (9 archives, incl. `zindi-ALL-work-2026-10-28.zip`,
+  `zindi-max-gamble-pack.zip`, `zindi-experiments-package-2026-10-28.zip`,
+  `zindi-forensic-audit-2026-10-28.zip`, `H1-complete-2026-10-28.zip`) and
+  the zip of this package.
+- **Ruled out by inspection:** `repo/probe.py` (read in full — a v1-era
+  hypothesis script: regional mean + β·standardised feature probes; a
+  different construction); `upload28b/check_order.py` and
+  `upload28b/validate_b.py` (retained — they validate and re-key the
+  already-built raw probe CSVs into `staged/`; they do not construct
+  them); `max-gamble-pack/code/make_batch28.py` (retained — builds the
+  *batch28* candidates from a different base at 0.03 amplitude; not the
+  component probes).
+- **Archive snapshot evidence:** `zindi-ALL-work-2026-10-28.zip` captures
+  the whole project tree at 2026-10-28 00:24 — after the raw probe files
+  were written (2026-10-27 23:18) — and its `upload28b/` contains only
+  `HYPOTHESIS.md`, `validate_b.py`, `check_order.py`, the raw CSVs and
+  `staged/`. No construction script exists even in that contemporaneous
+  snapshot.
+- **Reconstruction attempt (`06` R4):** four candidate direction forms
+  (including the exact `dirn()` centring convention of the retained
+  batch28 builder) were fitted to $(P - \mathrm{span5})$; none reproduces
+  $P$ (best max abs diff 5.0e-3, not 0.0).
+
+Conclusion: the raw probe files were most plausibly produced in an
+interactive session whose code was never saved to disk. The construction
+remains **documented** (`HYPOTHESIS.md`, experiments ledger) and
+**numerically consistent** (T8), but it is not re-executable and its exact
+arithmetic is **Unverified**. This replaces any bare "script lost" wording
+elsewhere in this package.
 
 ## 4. Candidate comparison (why this file, not another)
 

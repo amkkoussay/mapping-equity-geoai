@@ -68,7 +68,25 @@ component weights all 1.0.
 *Building* (`building()`), reference = strata `usfs_BuildingCount_sum` $R$:
 $$ g^{bld}_i = \mathrm{clip01}\bigl(1 - n^{bld}_i / R_i\bigr) \quad \text{if } R_i > 0, \text{ else undefined.} $$
 Fallback mode `BUILDING_REF="none"` (not the submitted configuration):
-$g = \mathrm{clip01}\bigl(1 - (n^{bld}/\max(hu,1))\,/\,\text{regional median of that ratio}\bigr)$.
+$g = \mathrm{clip01}\bigl(1 - (n^{bld}/\max(hu,1))\,/\,\text{regional median of that ratio}\bigr)$,
+selected by the CLI argument `python pipeline_v2.py <out.csv> none`.
+Precisely, from the campaign record: **no scored submission was produced
+by `pipeline_v2.py` in this mode** — the experiments ledger records
+`submission_v2.csv` as "structure-count building ref" (i.e.
+`BUILDING_REF="usfs"`) and every other v2 anchor as a parameter/level
+variant of that same build (§7, links 3–4). The fallback *formula* is the
+v1 building proxy, and its only scored appearances are the v1 submissions
+(`submission_baseline`, `submission_shrunk`, `submission_shrunk25`),
+produced by the separate v1 code (`repo/baseline.py`), whose building
+proxy the `"none"` mode replicates (the code's own comment:
+`"none" = v1 proxy`). A v2 file in fallback mode
+(`submission_v2_nousfs.csv`) was generated during the campaign but was
+**never scored** and was removed from the submission plan by the
+participant's decision (`TRACKING.md`, 2026-10-26). Caveat: per-run CLI
+arguments were not logged for every v2 anchor, so the "no scored anchor
+used it" statement rests on the ledger descriptions and on the fact that
+the level/shift anchors derive arithmetically from the single recorded
+v2 build — **Strongly supported**, not absolute.
 
 *Transport* (`transport()`): $g^{tr}_i = 0.05$ if `km_hwy` > 0, else
 undefined. (Presence-only: without a named-highway reference layer the code
@@ -126,8 +144,11 @@ Per `upload28b/HYPOTHESIS.md` and `repo/docs/experiments.csv` (row
 — the POI component — at quarter amplitude**:
 $$ P \;=\; \mathrm{span5} \;+\; \tfrac{1}{4}\cdot(\text{POI-component direction}), \qquad P \text{ clipped to } [0,1]. $$
 The result, `upload28b/staged/05_poi_component_probe.csv` (SHA-256
-`f5acaa10…`), scored **0.08483727** officially. The staging script that
-produced the file was not retained; the exact form of the direction
+`f5acaa10…`), scored **0.08483727** officially. The script that
+*constructed* the raw probe files was searched for across the full
+workspace and all zip archives on 2026-10-29 and **not found** (`02`
+§3.1); the *staging* script that re-keyed them into `staged/`
+(`upload28b/check_order.py`) is retained. The exact form of the direction
 (centering convention) is **Unverified**. Audit consistency check
 (`06` T8): $\mathrm{corr}(P - \mathrm{span5},\; \text{centred } g^{poi}) =
 0.940$, $\mathrm{corr}(P - \mathrm{span5},\; \text{centred } g^{bld}) =
@@ -190,3 +211,43 @@ CSV with header `GEOID,coverage_gap_score`, one row per scored tract
 (9,794), GEOID as 11-character zero-padded text, scores in $[0,1]$, row
 order identical to the anchor files' order (verified in `06`). This matches
 the sample-submission schema used throughout the campaign.
+
+## 7. Dependency chain of `usfs_BuildingCount_sum` into the documented file
+
+Because the compliance question about this column (see `08` R11) turns on
+*how* it reaches the documented submission, the full chain is mapped here,
+link by link, with the evidence status of each link. The short version
+"s0.8 does not use the building component directly" is **not** sufficient
+and is not the claim made here: the dependence is real, but it flows
+through exactly one path — the anchor span — and the final calibration's
+own inputs are free of the column.
+
+**The field.** `usfs_BuildingCount_sum` is a column of the
+organiser-provided strata tract table (`<region>-strata-tract-table.parquet`,
+227 columns; verified directly from the provided parquets for all five
+regions in this audit — the column is present as part of a `usfs_*` block
+of USFS *Wildfire Risk to Communities* model outputs). The challenge
+package was distributed by the organisers (Source Cooperative bucket
+`humane-intelligence/bias-bounty-mapping-equity-challenge`;
+`feature-audit/PROVENANCE.md`). Nothing about the column was downloaded
+separately.
+
+| # | Link | Mechanism | Evidence | Status |
+|---|---|---|---|---|
+| 1 | Provided strata table → `pipeline_v2` | `load()` left-joins the strata columns `ALAND, pop_total, ur_class, svi_overall, cvi_overall, tribal_any, usfs_BuildingCount_sum` on GEOID | `pipeline_v2.py` (`STRATA`, `load()`); parquet schema read directly in this audit | **Verified** (code + artifact) |
+| 2 | Column → building component | $g^{bld}_i = \mathrm{clip01}(1 - n^{bld}_i / R_i)$ with $R_i$ = `usfs_BuildingCount_sum`, undefined where $R_i \le 0$ | `pipeline_v2.py` `building()`, submitted configuration `BUILDING_REF="usfs"` | **Verified** (code) |
+| 3 | Building component → v2 anchors | Composite = mean over defined components, so `building_gap` enters `submission_v2.csv` (ALPHA 0.25) and `submission_v2_a0.csv` (ALPHA 0) | `repo/docs/experiments.csv`: v2 recorded as "structure-count building ref + edge-case rules; ALPHA=0.25"; v2_a0 as "v2 regional mean only (ALPHA=0)". Fallback mode not used by any scored anchor (§2) | **Strongly supported** (ledger; per-run CLI args not logged) |
+| 4 | v2_a0 → level/shift anchors | `v2_a0_x0.8`, `v2_a0_x1.2`, `v2_k053` and the TX/AZ region probes are scalings/shifts of the v2_a0 regional means — they inherit link 3 unchanged | `repo/docs/experiments.csv` rows of 2026-10-27 | **Strongly supported** |
+| 5 | Anchors → span5 | span5 is an affine-span fit over the ten previously scored submissions, which include the seven v2-derived anchors of links 3–4 (and three v1 anchors, which do **not** involve the column) | `upload28/zindi-5-daily-submissions/README.md` ("algebraic extrapolations from the ten previously scored submissions"); exact five directions/coefficients not recorded | **Documented**; coefficients **Unverified** |
+| 6 | span5 → probe $P$ | $P$ = span5 + ¼·(POI-component direction). The direction itself derives from the v2 **POI** component, whose inputs (`hu`, `n_poi`, `n_school`, `n_fire`, region) do **not** include the column — but $P$ inherits links 1–5 through its span5 base | `upload28b/HYPOTHESIS.md`; `pipeline_v2.py` `poi()`; consistency check `06` T8/R4 | **Documented**; exact arithmetic **Unverified** |
+| 7 | $P$, `hu`, `area_km2` → s0.8 | exp-v7 calibration (§5). `hu` comes from the provided ACS housing file and `area_km2` from the provided census-tract geometry, both via `features.py` — **neither comes from the strata table and neither involves the column** | `exp-v7/code/h1_density_calibration.py`; `repo/features.py`; exact re-execution `06` T5/R3 | **Verified** (code + re-execution) |
+
+**Net statement.** The column reaches the documented file only through
+links 1–5 (the anchor-span path). Remove the v2-derived anchors and the
+column's influence vanishes; with them present, `span5` — and therefore
+$P$ and s0.8 — are numerically downstream of vectors computed with the
+column as a denominator. The influence is indirect but genuine, and its
+size cannot be isolated from the retained artifacts (span5's coefficients
+are unrecorded, link 5). Whether this constitutes a compliance problem is
+**not resolved here** — see the open item `08` R11, which sets out the
+official rules text and the evidence on both sides.

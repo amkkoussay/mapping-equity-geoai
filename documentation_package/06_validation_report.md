@@ -29,11 +29,37 @@ after packaging: exit code 0).
   extracts in the `repo/` layout) is absent, so `features.py` /
   `pipeline_v2.py` could not be re-run. No substitute data tree was used.
   This is a gap in the reproduction chain, recorded in `05` §2.
-- **F2 — Probe staging script missing.** Stage D cannot be re-executed;
+- **F2 — Probe construction script missing.** Stage D cannot be re-executed;
   only its documented description and the T8 consistency check support it.
+  (Second pass, 2026-10-29: the script was searched for across the full
+  workspace and all archives and **not found** — see R4 below and
+  `02` §3.1. The *staging* script, `upload28b/check_order.py`, is retained;
+  it re-keys already-built probe files and does not construct them.)
 - **F3 — No platform-side artifact.** No test can upgrade the
   file→HeXaMraA→0.081231862 association beyond Strongly supported from
   local evidence alone (`02` §2).
 
 No test that was run failed. Items F1–F3 are evidence gaps, not test
 failures; they are carried into `09` and `10` as open items.
+
+## Addendum — package self-containment repair (2026-10-29, second pass)
+
+The first-pass package was **not self-contained**: `scripts/rebuild_s08.py`
+read `max-gamble-pack/scored/v2_tracts.parquet`,
+`upload28b/staged/05_poi_component_probe.csv` and `work29/evaluator.py`
+from the project tree, and `tests/test_submission_file.py` also read the
+probe from the project tree — a reviewer holding only this package could
+not re-run them. This was found by the participant's own audit. The repair
+below was executed and verified; the originals outside the package were
+not touched, and no computation logic changed (path adaptation only, noted
+in each file's header).
+
+| # | Check | Command / method | Observed result |
+|---|---|---|---|
+| R1 | Byte-identity of the new evidence copies | `sha256sum` on copies vs originals | `evidence/05_poi_component_probe.csv` = `f5acaa101fc6fb5d094653ca09dd0a914c1b28f29dcad53cedd34b5d2298461d` — identical to `upload28b/staged/05_poi_component_probe.csv`. `evidence/evaluator.py` = `c65fc16d4791bc2d03779bb3be884fecdaea8ce9263b67c2171a59d44c996e38` — identical to `work29/evaluator.py` |
+| R2 | Column-extract verification | Extract `GEOID, hu, area_km2` from `max-gamble-pack/scored/v2_tracts.parquet` (SHA-256 `f216c703ab9bfaf1b369eff466b038352f08b2df35766aaa3826d68f5b933c19`) into `evidence/v2_tracts_columns.csv`; re-read and compare | Rows 9,794 = 9,794; GEOID sequence identical; `hu` max abs diff **0.0**; `area_km2` max abs diff **0.0**; neither column contains NaNs. The runnable path uses this verified extract; the parquet remains the archival artifact (hash-recorded in `00`) and is **not** packaged, because it is binary |
+| R3 | **Isolated self-containment run** | `cp -r documentation_package /tmp/pkgtest/`, then from `/tmp` (outside the project tree): `/home/hatch/workspace/geoai-zindi/.venv/bin/python /tmp/pkgtest/documentation_package/tests/test_submission_file.py` and `.../scripts/rebuild_s08.py` | Tests: **10/10 PASS**, exit 0. Rebuild: `rows=9794 max_abs_diff=0.0 mean_abs_diff=0.0 exact_rows=9794`, exit 0. All inputs resolved under the isolated copy's `evidence/`; the interpreter is the project's `.venv` (an environment, not project data); **no project files were read** |
+| R4 | Probe-construction search + reconstruction attempt | Full-workspace and archive search (scope in `02` §3.1); four candidate direction forms fitted to $(P - \mathrm{span5})$: regionally centred/std-normalised `poi_gap` (the `dirn()` convention of `max-gamble-pack/code/make_batch28.py`), global z-score, globally centred raw `poi_gap`, and the building analogue against probe 04 — each at least-squares amplitude (≈0.0073) and at the round value 0.0075 | Construction script **not found** anywhere searched. No candidate form reproduces $P$: best max abs diff **5.0e-3** (vs 0.0 required). The exact Stage-D arithmetic therefore remains **Unverified**; T8's correlation consistency stands as the strongest available support |
+
+After the repair, the packaged tests were re-run in place as well:
+10/10 PASS and rebuild exit 0 (same outputs as R3).

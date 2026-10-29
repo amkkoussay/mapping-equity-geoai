@@ -18,10 +18,14 @@ participant from his own submissions page.
 
 **Reproducibility — exact at the final level, broken at two upstream
 points.** L2 (submission file from its inputs) is verified bit-for-value
-and deterministic. L1 (features from raw extracts) cannot be re-run in
-this tree (data layout absent), and Stage D (probe construction) lost its
-generating script. L3 (the official score) is not locally reproducible by
-construction.
+and deterministic — and, after the 2026-10-29 package repair,
+**self-contained**: the packaged tests and rebuild were executed
+successfully in an isolated copy of this package alone (`06` R1–R3), so a
+reviewer holding only the package can re-run them. L1 (features from raw
+extracts) cannot be re-run in this tree (data layout absent), and Stage
+D's construction script was searched for across the full workspace and
+archives and not found (`02` §3.1). L3 (the official score) is not
+locally reproducible by construction.
 
 **Technical documentation completeness — complete for the implemented
 chain.** Every step from challenge files to the submitted CSV is described
@@ -33,19 +37,25 @@ direction's exact arithmetic, and the original run-time package versions.
 **Validation coverage — all runnable checks executed and passing.**
 10 packaged checks + the audit suite (`06`): file identity/schema/order,
 numeric bounds, exact regeneration of two independently scored files,
-determinism, screen recomputation, package hygiene scan. No executed test
-failed. The untestable areas (raw-geometry handling in Stage A; platform
+determinism, screen recomputation, package hygiene scan, and — after the
+repair — an isolated package-only execution of the packaged tests and
+rebuild (`06` R3). No executed test failed. The untestable areas (raw-geometry handling in Stage A; platform
 association) are named as gaps, not silently skipped.
 
-**Compliance status — clean for the documented submission, one flagged
+**Compliance status — clean for the documented submission, one OPEN
 question.** Only challenge-provided data enters the chain; removed
 reference layers were never used for the leaderboard (a documented request
 to do so was refused); open-source tools only; no AutoML; submission
-counts within limits. The flagged question is the v2 building denominator
-(`usfs_BuildingCount_sum`, a provided strata column) — disclosed by the
-author himself, with a fallback mode shipped; the documented submission
-does not consume that component directly. Award mechanics (form URL,
-required fields/formats) remain **Unverified** from official sources.
+counts within limits. The open question is the v2 building denominator
+(`usfs_BuildingCount_sum`, a column of the provided strata table): its
+full dependency chain into the documented file is mapped in `03` §7 — it
+arrives only through the anchor span, and the final calibration's direct
+inputs are free of it — but the official rules text does not address the
+field, and a documented second-hand attribution derives the underlying
+product from a removed layer. The item is recorded as **Unverified —
+OPEN** (`08` R11/§1.1), resolved in neither direction. Award mechanics
+(form URL, required fields/formats) remain **Unverified** from official
+sources.
 
 **Candour items a reviewer should know.** (i) The documented
 configuration breached the campaign's own frozen stability gate

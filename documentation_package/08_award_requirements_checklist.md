@@ -22,16 +22,62 @@ or requirement has been invented.
 | R8 | Top-10 code review: code requested by e-mail at close; 48 hours to submit; code must reproduce the score; non-running code is dropped from the top 10 (rules page) | This package + `05`/`06`: the final transformation reproduces the file exactly from retained inputs; **gap**: L1 (features from raw extracts) not re-executable in this tree (F1) and Stage D script missing (F2) — if a code review is requested, the reproducible chain has documented breaks upstream of $P$ | **Partially satisfied** — see blockers in `10` |
 | R9 | "General-purpose development assistants … may be used for code drafting, debugging, testing or documentation, provided they are not required to execute or reproduce the submitted solution" (rules page) | This documentation package was prepared with an AI assistant (Muse) under the participant's direction; the solution pipeline itself is plain Python requiring no assistant to run | **Satisfied** (disclosed) |
 | R10 | Single account / no code sharing outside a team | Solo participant, one account (koussayy) per all records | **Satisfied** (as recorded) |
+| R11 | **OPEN ITEM — status of the provided strata column `usfs_BuildingCount_sum`** (building-component denominator in v2; reaches the documented submission through the anchor span — full chain in `03` §7) | Evidence on both sides is set out in §1.1 below. The official rules text permits "only the datasets provided for this challenge" and the column ships inside a provided dataset; the official text nowhere addresses this field, the strata table, or derived aggregates by name; a documented second-hand attribution says the column's product derives from a removed reference layer (Microsoft footprints) | **Unverified — OPEN** (not resolved in either direction; participant's call whether to raise it with the organisers) |
 
-**Open compliance question (flagged by the author himself):** the v2
-building component uses the strata column `usfs_BuildingCount_sum` as its
-reference denominator. It ships inside the provided challenge package, so
-it falls under R1's "datasets provided"; `repo/WRITEUP.md` §2 nonetheless
-flags the theoretical concern that organisers could view it as close to a
-reference layer, and ships a fallback (`BUILDING_REF=none`). The documented
-submission does not consume the building component directly (`04` §1), but
-its probe ancestry includes v2-derived submissions. Status: **documented
-risk, participant's call whether to raise it with the organisers**.
+### 1.1 The `usfs_BuildingCount_sum` question — evidence on both sides (OPEN)
+
+This item is **not closed**, and this package does not resolve it by
+assertion in either direction. What is established:
+
+*Facts (verified).* The column is part of the organiser-provided strata
+tract table, distributed in the challenge package (schema read directly
+from the provided parquets; `feature-audit/PROVENANCE.md`;
+`repo/WRITEUP.md` §2 lists it among the provided inputs). It was not
+downloaded from anywhere. The official rules page
+(`https://zindi.world/competitions/bias-bounty-mapping-equity-challenge`,
+retrieved 2026-10-29) states verbatim: *"You may use only the datasets
+provided for this challenge, however you may use additional public
+datasets for the Best Bias Discovery prize only (documented and
+reproducible)."* **The official text does not address this field, the
+strata table, or derived columns specifically** — no sentence in the
+retrieved rules names USFS, the strata table, or any individual column as
+permitted or excluded. The chain by which the column reaches the
+documented submission is mapped in `03` §7: it enters only through the
+v2 building component → v2-derived anchors → span5 → probe path; the
+final calibration's direct inputs do not involve it. The fallback mode
+(`BUILDING_REF="none"`) exists and was not used by any scored anchor
+(`03` §2).
+
+*Considerations against treating it as settled.* (i) A documented
+attribution — recorded in the participant's own `stage2/PREREGISTRATION.md`
+and campaign log, citing a fellow participant's writeup (vigohan) — states
+that the USFS building count "derives from Microsoft footprints at 30 m".
+Microsoft footprints are one of the reference layers the organisers
+removed from the package (removal recorded 2026-09-25, `TRACKING.md`).
+The USFS product documentation itself was **not** retrieved in this
+audit, so the derivation claim is **Documented (second-hand)**, not
+Verified. (ii) The rules' prohibition is dataset-level; a fellow
+participant's honest-entry model card (recorded in `TRACKING.md`) reads
+the removal as also forbidding "equivalent copies from elsewhere" —
+whether an *organiser-provided* aggregate derived from a removed layer
+falls under that reading is an interpretation the official text does not
+settle. (iii) Materiality is not trivial: replacing the ACS-housing
+denominator with this column was the single largest recorded v2
+improvement (−25% RMSE, `repo/docs/experiments.csv`).
+
+*Considerations for the provided-data reading.* (i) The organisers
+themselves placed the column in the provided package *after* removing
+the reference layers (the removal predates the challenge's scored period;
+the strata table as distributed contains the column). (ii) The column is
+a tract-level model aggregate from a wildfire-risk product, not the
+footprint layer itself, and `repo/WRITEUP.md` notes the two products'
+counts differ in practice (sheds, industrial structures, new
+construction). (iii) The participant disclosed the column's
+role openly in the writeup from the start and shipped a fallback.
+
+**Verdict: OPEN / Unverified.** The participant does not rule it a
+violation and does not consider it closed. The only authoritative
+resolution would be an organisers' clarification; §3 action 4 stands.
 
 ## 2. Best Documentation award mechanics
 
