@@ -13,6 +13,11 @@ not be confirmed from an official source are marked **Unverified**.
 (Update of 2026-10-29 evening: the form URL in §2 is quoted from the
 official Info page; the form's own fields could not be inspected — the
 form sits behind a Google sign-in wall — and are marked accordingly.)
+(Second update, 2026-10-29: the participant opened the form itself;
+the Best Documentation section's upload requirement and its required
+Submission ID field are now verified from the form — see A5 and §3.
+The form's remaining sections/fields were not examined. **The form has
+not been submitted.**)
 
 ## 1. Competition rules compliance (leaderboard solution)
 
@@ -115,17 +120,22 @@ action 4 stands.
 | A2 | Submission route for the prize: the writeup is submitted through the **linked form**; **no separate leaderboard submission is required** (Info page) | Form URL, quoted from the official Info page: **https://docs.google.com/forms/d/e/1FAIpQLScaX0u6IaSaSj8BZqGxhqoq7sw_Bq_sfjj6Ma-R41E3aik0aA/viewform** | **Satisfied** — link retrieved from the official source |
 | A3 | The entry must **clearly indicate Best Bias Discovery / Best Documentation / both**, and must **identify the Zindi username/team name and the associated leaderboard submission(s)** (Info page) | Username **koussayy**; associated leaderboard submission **HeXaMraA** (association Verified — `02`). The form's own fields could not be inspected: the form sits behind a Google sign-in wall | **Satisfied** as to the stated requirements; the form's own fields remain **Unverified** |
 | A4 | Required writeup content (Info page): document **data sources**; **how each component was computed**; **edge cases** (zero-population tracts, water-dominated tracts, tracts with no Overture data); and **any alternative weightings applied and why** | Coverage in this package: data sources → `03` + `04`; component computation → `03`; edge cases → `04`; alternative weightings → `03` + `07` | **Satisfied** |
-| A5 | Required files / accepted formats for the documentation entry | Not stated on the Info page. A **participant** post (discussion 35334, someamount2190, 14 Oct 2026 — a participant report, **not** an organizer source) states that the form's upload field required a **PDF, maximum 10 MB**. This package is Markdown documents + CSV evidence + one PDF proof; `repo/WRITEUP.pdf` is a pre-rendered PDF of the earlier v2 writeup only | **Partially satisfied** — participant-reported only, unverified against the form itself; if accurate, a single-file PDF rendering of the writeup is needed |
+| A5 | Required files / accepted formats for the documentation entry | **Verified from the form itself** (opened by the participant, 2026-10-29): the Best Documentation section requires uploading relevant files in **a single PDF or other text file format, max 10 MB**, and includes a required field **"Submission ID associated with this submission:"**. This corroborates the earlier participant report (discussion 35334, someamount2190, 14 Oct 2026). A consolidated single-file PDF rendering of this package was prepared on 2026-10-29 for this upload | **Satisfied** — upload requirement and Submission ID field verified from the form itself (2026-10-29) |
 | A6 | Deadline for the special prizes | **No special-prize-specific deadline is stated** on the Info page. The competition header shows the close as **01 Nov** (no hour); Humane Intelligence states the challenge closes **31 October 2026**; the campaign's working deadline is **2026-10-31 23:29 UTC** (C023) | **Partially satisfied** — treat the competition close as the deadline; submit early |
 | A7 | Restrictions on public code/data for award entries | Rules require any shared code to be available to all participants via the platform. **Observed 2026-10-29 evening** (two independent routes: the signed-out repository page and the GitHub API, `'private': false`): the participant's repository `amkkoussay/mapping-equity-geoai` is **publicly readable during the competition** (register C032). It was private when this package was first prepared (2026-10-29 daytime), and the earlier campaign plan recorded in this package was publication only after the close; the visibility change was **not** performed by this documentation process (whose GitHub operations were file pushes only), and who changed it or why is not established here | **Observed — the cited availability requirement is met as of 2026-10-29**; the participant should confirm at submission time that the repository's public state matches the award form's instructions |
 
 ## 3. Exact remaining actions before award submission
 
 1. ~~Locate the Best Documentation form link~~ — **done** (A2, quoted
-   from the official Info page, 2026-10-29). Remaining: sign in to the
-   form and record its own fields (A3) and confirm the upload format
-   (A5: participant-reported PDF ≤ 10 MB, unverified) and any deadline
-   shown inside the form (A6).
+   from the official Info page, 2026-10-29). ~~Confirm the upload
+   format~~ — **done** (2026-10-29): the participant opened the form
+   itself; the Best Documentation section's upload requirement (single
+   file, PDF or text document, max 10 MB) and its required "Submission
+   ID associated with this submission" field are verified from the form
+   (A5). Remaining: any deadline shown inside the form (A6), and the
+   form's other sections/fields beyond the Best Documentation section,
+   which remain unexamined. The submit action itself (action 5 below)
+   remains open — **the form has NOT been submitted**.
 2. ~~Confirm HeXaMraA ↔ 0.081231862 on the participant's Zindi
    submissions page and capture proof~~ — **done** (2026-10-29):
    `evidence/zindi_submissions_proof.pdf`; the provenance in `02` is
@@ -139,7 +149,11 @@ action 4 stands.
    participant's decision.
 5. Submit the writeup through the form (A2), indicating **Best
    Documentation** and identifying username **koussayy** and submission
-   **HeXaMraA** (A3). Attach per the form's format requirements; note
+   **HeXaMraA** (A3), entering **HeXaMraA** in the form's required
+   "Submission ID associated with this submission" field and attaching
+   the single consolidated PDF rendering of this package (prepared
+   2026-10-29; format per A5, now verified from the form itself). Note
    that `repo/WRITEUP.md` covers the v2 method only — this package is
    the document that covers the best submission's full chain, and its
    content coverage of the Info page's requirements is mapped in A4.
+   **Status: OPEN — the form has NOT been submitted.**

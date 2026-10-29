@@ -78,12 +78,15 @@ Confidence labels: **Verified** (direct artifact or executed check) ·
 - The exact arithmetic of the probe's POI direction (Stage D; construction
   script searched for and not found — `02` §3.1; four candidate direction
   forms fail to reproduce $P$, best max abs diff 5.0e-3 — `06` R4).
-- The Best Documentation **form's own fields** and its accepted upload
-  format: the form sits behind a Google sign-in wall and was not
-  inspected; the format (PDF, max 10 MB) rests on a participant report
-  (discussion 35334 — participant, not organizer; `08` A5). The form URL
-  itself is retrieved and cited (`08` A2). No special-prize-specific
-  deadline is stated (`08` A6).
+- The Best Documentation form's sections/fields **beyond its Best
+  Documentation section**, which remain unexamined. (The Best
+  Documentation section itself was verified from the form, opened by
+  the participant on 2026-10-29: relevant files are uploaded as a
+  **single file, PDF or text document, max 10 MB**, and the section
+  includes a required **"Submission ID associated with this
+  submission"** field — `08` A5.) The form URL itself is retrieved and
+  cited (`08` A2). No special-prize-specific deadline is stated
+  (`08` A6). The form has **not** been submitted.
 - **OPEN:** whether the organisers would treat `usfs_BuildingCount_sum`
   as an ordinary provided column or as reference-layer-adjacent. The
   column indisputably ships inside the provided strata table and reaches
